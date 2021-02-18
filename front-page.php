@@ -16,10 +16,12 @@
             <div class="col-12">
                 <div class="main_news_container">
                     <?php
+
                     $q = new WP_Query([
                         "posts_per_page" => 7,
                         "post__in" => get_option('sticky_posts'),
                     ]);
+
                     while ($q->have_posts()) : $q->the_post();
                         if ($q->current_post === 0) {
                             get_template_part('templates/large', 'news');
@@ -60,20 +62,22 @@
                     </li>
                 </ul>
                 <div class="tab_content_area">
+
                     <div id="cat_one" class="active tab_content bd_top_pink">
                         <?php
-                        $q = new WP_Query(['posts_per_page' => 5, 'category_name' => 'chattogram']);
-                        while ($q->have_posts()) {
-                            $q->the_post();
-                            if (0 === $q->current_post) {
-                                get_template_part("templates/tab-large-news");
-                            } else {
-                                get_template_part("templates/tab-news");
+                            $q = new WP_Query(['posts_per_page' => 5, 'category_name' => 'chattogram']);
+                            while ($q->have_posts()) {
+                                $q->the_post();
+                                if (0 === $q->current_post) {
+                                    get_template_part("templates/tab-large-news");
+                                } else {
+                                    get_template_part("templates/tab-news");
+                                }
                             }
-                        }
                         ?>
                         <a href="<?php echo eis_get_category_link("chattogram"); ?>" class="more">আরোও <i class="fas fa-angle-double-right"></i></a>
                     </div>
+
                     <div id="cat_two" class="tab_content bd_top_yellow">
                     </div>
                     <div id="cat_three" class="tab_content bd_top_green">

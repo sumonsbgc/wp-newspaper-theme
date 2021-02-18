@@ -43,9 +43,9 @@
             <div class="col-md-4">
                 <?php
                 if (has_custom_logo()) {
-                    the_custom_logo();
+                    echo get_custom_logo();
                 } else {
-                    printf("<a class=\"d-inline-block\" href=\"%s\"><img class=\"img-fluid\" src=\"%s\"></a>", site_url('/'), get_theme_file_uri('assets/images/logo.png'));
+                    printf("<a class=\"d-inline-block\" href=\"%s\"><img class=\"img-fluid\" src=\"%s\"></a>", esc_url(site_url('/')), esc_url(get_theme_file_uri('assets/images/logo.png')));
                 }
                 ?>
             </div>
@@ -75,6 +75,7 @@
                         'echo' => false
                     )
                 );
+                
                 echo $menu;
             }
             ?>
